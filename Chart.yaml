@@ -1,0 +1,12 @@
+apiVersion: v2
+name: WinterCampus
+version: 1.0.0
+kubeVersion: 1.21
+keywords:
+  - CERN
+  - wintercampus
+  - Krakow
+home: https://cern.home
+maintainers:
+  - name: D. Kekelidze
+    email: dkekel@gmail.com

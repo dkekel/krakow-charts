@@ -1,0 +1,1 @@
+An example of Helm Charts for deploying a simple Java application.
