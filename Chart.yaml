@@ -1,7 +1,7 @@
 apiVersion: v2
 name: WinterCampus
 version: 1.0.0
-kubeVersion: 1.21
+kubeVersion: 1.20
 keywords:
   - CERN
   - wintercampus
