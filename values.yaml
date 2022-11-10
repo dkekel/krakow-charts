@@ -4,7 +4,7 @@ geneva:
     replicas: 3
     port:
       external: 80
-      internal: 8080
+      internal: 9090
   service:
     selector: geneva-service
 
