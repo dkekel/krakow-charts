@@ -18,5 +18,5 @@ krakow:
   service:
     selector: krakow-service
   environment:
-    JAVA_OPTS:
+    JAVA_TOOL_OPTIONS:
       -Dremote.url=http://geneva-service
