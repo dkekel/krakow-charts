@@ -1,7 +1,22 @@
-server:
-  image: nginx:1.14.2
-  replicas: 3
-  port: 80
+geneva:
+  server:
+    image: dkekel/geneva:1.0
+    replicas: 3
+    port:
+      external: 80
+      internal: 8080
+  service:
+    selector: geneva-service
 
-service:
-  selector: nginx-test
+krakow:
+  server:
+    image: dkekel/krakow:1.0
+    replicas: 1
+    port:
+      external: 80
+      internal: 8080
+  service:
+    selector: krakow-service
+  environment:
+    JAVA_OPTS:
+      -Dremote.url=http://geneva-service

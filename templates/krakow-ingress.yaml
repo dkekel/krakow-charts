@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: krakow-ingress
+  namespace: krakow
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.entryPoints: "http"
+    traefik.ingress.kubernetes.io/router.entrypoints: http
+spec:
+  rules:
+    - host: argocd-wintercampus.cern.ch
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: krakow-service
+                port:
+                  number: 80

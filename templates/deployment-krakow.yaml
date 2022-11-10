@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krakow-deployment
+  labels:
+    app: krakow
+spec:
+  replicas: {{ .Values.krakow.server.replicas }}
+  selector:
+    matchLabels:
+      app: krakow
+      app.kubernetes.io/name: {{ .Values.krakow.service.selector }}
+  template:
+    metadata:
+      labels:
+        app: krakow
+        app.kubernetes.io/name: {{ .Values.krakow.service.selector }}
+    spec:
+      containers:
+        - name: krakow
+          image: {{ .Values.krakow.server.image }}
+          envFrom:
+            - configMapRef:
+                name: krakow-configmap
+          ports:
+            - containerPort: {{ .Values.krakow.server.port.internal }}

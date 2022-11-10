@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: krakow-configmap
+  labels:
+    app: geneva
+data:
+  {{- if .Values.krakow.environment }}
+  {{- range $key, $val := .Values.krakow.environment }}
+  {{ $key }}: {{ tpl $val $ | quote }}
+  {{- end }}
+  {{- end }}
+

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geneva-deployment
+  labels:
+    app: geneva
+spec:
+  replicas: {{ .Values.geneva.server.replicas }}
+  selector:
+    matchLabels:
+      app: geneva
+      app.kubernetes.io/name: {{ .Values.geneva.service.selector }}
+  template:
+    metadata:
+      labels:
+        app: geneva
+        app.kubernetes.io/name: {{ .Values.geneva.service.selector }}
+    spec:
+      containers:
+        - name: geneva
+          image: {{ .Values.geneva.server.image }}
+          ports:
+            - containerPort: {{ .Values.geneva.server.port.internal }}
